@@ -53,7 +53,7 @@ if __name__ == "__main__":
     ok &= check(lambda: MC.FrozenIRT(k=10), "FrozenIRT", M)
     ok &= check(lambda: MC.RunningAbility(), "RunningAbility", M)
     ok &= check(lambda: MC.ItemMean(), "ItemMean", M)
-    ok &= check(lambda: MC.PFA(), "PFA", M)
+    ok &= check(lambda: MC.PFA(), "PFA-shared", M)
     ok &= check(lambda: MC.BestLR(), "Best-LR", M)
     ok &= check(lambda: MC.BestLR_I(), "Best-LR+I", M)
     print("\nNO TARGET LEAKAGE" if ok else "\nLEAKAGE DETECTED")
