@@ -11,7 +11,7 @@ Model families
 Static, provably non-tracing
     GlobalMean, ItemMean, SkillMean, FrozenAbility, FrozenIRT
 Classical tracing
-    RunningAbility, PFA (Pavlik, Cen & Koedinger 2009),
+    RunningAbility, PFA-shared (constrained PFA-style baseline),
     BestLR (Gervet et al. 2020), BKT (Corbett & Anderson 1995)
 """
 
