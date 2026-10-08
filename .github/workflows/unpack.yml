@@ -1,0 +1,34 @@
+name: unpack-reproducibility-package
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  unpack:
+    if: ${{ github.actor != 'github-actions[bot]' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unpack synchronized source package
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ ! -f reproducibility_package.zip ]; then
+            echo "Archive not present yet; nothing to unpack."
+            exit 0
+          fi
+          unzip -o reproducibility_package.zip -d .
+          rm -f .github/workflows/unpack.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "Publish synchronized reproducibility source"
+          git push
