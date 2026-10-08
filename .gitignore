@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.DS_Store
+
+# Third-party benchmark material fetched locally
+data/benchmarks/
+
+# Large/generated artifacts
+predictions/
+cache/
+*.npz
+*.npy
