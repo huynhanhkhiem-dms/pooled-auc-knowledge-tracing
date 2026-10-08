@@ -1,0 +1,8 @@
+Construction (learner levels ),assistments09,assistments15,spanish,statics
+the model's own levels,0.7748,0.7266,0.8428,0.8249
+all learners equal,0.6990,0.6365,0.8012,0.8031
+learners' true accuracy,0.6895,0.6894,0.6648,0.6225
+random levels,0.5321,0.4976,0.5077,0.5010
+levels reversed,0.3130,0.3109,0.3526,0.3923
+span of pooled AUC,0.462,0.416,0.490,0.433
+distinct values of,1,1,1,1
