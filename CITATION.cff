@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this code or the derived tables, please cite the associated manuscript."
+title: "Pooled AUC evaluation in knowledge tracing: reproducibility code and derived tables"
+type: software
+authors:
+  - family-names: Huynh
+    given-names: Anh Khiem
+    orcid: "https://orcid.org/0009-0007-7210-174X"
+repository-code: "https://github.com/huynhanhkhiem-dms/pooled-auc-knowledge-tracing"
+date-released: 2026-10-08
+license: MIT
