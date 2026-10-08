@@ -39,11 +39,10 @@ _COLS = ["user_id", "item_id", "timestamp", "correct", "skill_id"]
 def _read_split(name: str, split: str, root: str) -> pd.DataFrame:
     """Read one split from the TSV release, or from the compact npz mirror.
 
-    The published archive ships ``data_npz/`` (integer columns, compressed:
-    23 MB for all eight benchmarks) instead of the 320 MB of TSVs, so the whole
-    replication package fits in one file.  ``fetch_data.sh`` restores the
-    original TSVs from the source repository if you prefer them; both paths
-    produce byte-identical frames.
+    The public repository retrieves the original preprocessed TSV files through
+    ``fetch_data.sh``.  An optional local ``data_npz/`` mirror is also
+    supported for compact offline use; when both are absent, the loader explains
+    how to retrieve the pinned benchmark release.
     """
     csv = os.path.join(root, name, f"preprocessed_data_{split}.csv")
     if os.path.exists(csv):
