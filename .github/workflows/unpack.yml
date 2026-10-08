@@ -17,11 +17,15 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          if compgen -G "package_b64/part-*.txt" > /dev/null; then
+            cat package_b64/part-*.txt | base64 -d > reproducibility_package.zip
+          fi
           if [ ! -f reproducibility_package.zip ]; then
             echo "Archive not present yet; nothing to unpack."
             exit 0
           fi
           unzip -o reproducibility_package.zip -d .
+          rm -rf package_b64
           rm -f .github/workflows/unpack.yml
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
