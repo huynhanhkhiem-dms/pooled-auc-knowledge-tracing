@@ -1,0 +1,9 @@
+Dataset,within weight,best within AUC,sensitivity,spread over models
+assistments09,0.00517,0.7404,0.00134,0.179
+assistments12,0.00060,0.7224,0.00017,0.182
+assistments15,0.00064,0.6733,0.00021,0.149
+assistments17,0.00436,0.7559,0.00106,0.210
+algebra05,0.02096,0.8411,0.00333,0.322
+bridge_algebra06,0.00692,0.7701,0.00159,0.266
+spanish,0.02730,0.8260,0.00475,0.244
+statics,0.02354,0.8133,0.00440,0.303
