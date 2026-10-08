@@ -1,24 +1,22 @@
 # Pooled AUC Does Not Identify Within-Learner Predictive Discrimination in Knowledge Tracing
 
-Reproducibility repository for the manuscript by **Huynh Anh Khiem**
+Public companion repository for the manuscript by **Huynh Anh Khiem**
 (Ton Duc Thang University; ORCID 0009-0007-7210-174X).
 
-## What is included
+## Scope of this repository
 
-- synchronized analysis code for the **14 scoring rules** reported in the manuscript;
-- the exact pooled/within/between AUC decomposition and nested learner-KC/item metrics;
-- the canonical skill-specific PFA implementation used by the manuscript specification;
-- bounded-context DKT and SAKT scoring implementations used only as heterogeneous score functions;
-- causality, gradient, leakage, and decomposition tests;
+This repository exposes the code and machine-readable artifacts needed to audit the
+paper's central methodological claims:
+
+- exact pooled / within-learner / between-learner AUC decomposition;
+- nested within-learner-within-KC and within-learner-within-item pair weighting;
+- the rank-preserving non-identification construction;
+- synthetic correctness tests for the decomposition identities and construction;
 - a pinned benchmark-data retrieval script and source manifest;
-- machine-readable exports of the manuscript tables.
+- machine-readable exports of the seven tables reported in the manuscript.
 
-## Data
-
-Third-party benchmark files are not mirrored in this repository. Their provider terms remain in force.
-Run `./fetch_data.sh` to retrieve the public preprocessing release used by the analysis. The retrieval
-is pinned to Gervet et al.'s preprocessing repository at commit
-`a7ae193aa6957003a764aed7c95b07666fd4f1da`.
+The repository does **not** claim to mirror every third-party benchmark file or every
+large cached model prediction used during the empirical study.
 
 ## Environment
 
@@ -26,34 +24,65 @@ Python 3.11+ is recommended.
 
 ```bash
 python -m pip install -r requirements.txt
+```
+
+## Core correctness check
+
+From the repository root:
+
+```bash
+python code/tests/test_core.py
+```
+
+Expected output:
+
+```
+ALL CORE CHECKS PASSED
+```
+
+## Benchmark data
+
+The study uses eight public/preprocessed knowledge-tracing benchmarks:
+ASSISTments 2009, 2012, 2015, and 2017; Algebra 2005; Bridge to Algebra 2006;
+Spanish; and Statics.
+
+Third-party benchmark files are not re-hosted here. Run:
+
+```bash
 chmod +x fetch_data.sh
 ./fetch_data.sh
 ```
 
-## Correctness checks
+The script retrieves the preprocessing release pinned to commit
+`a7ae193aa6957003a764aed7c95b07666fd4f1da` of
+`theophilegervet/learner-performance-prediction`. Original provider terms remain
+in force.
 
-```bash
-python code/tests/test_gradients.py
-python code/tests/test_sakt_gradients.py
-python code/tests/test_leakage.py
-```
+## Reported results
 
-All three test suites passed in the release prepared on 2026-10-08.
+`results/manuscript_tables/` contains CSV exports of the seven tables in the
+submission manuscript. They are provided for transparent inspection and should be
+read together with the manuscript definitions, estimands, and limitations.
 
-## Scoring rules
+## Code map
 
-GlobalMean, ItemMean, SkillMean, FrozenAbility, FrozenIRT, RunningAbility, PFA,
-BKT, Best-LR, Best-LR+I, DKT, DKT+I, SAKT, and SAKT+I.
+- `code/auc_metrics.py`: exact pair-count AUC decomposition and nested metrics.
+- `code/nonidentification.py`: within-learner-rank-preserving restratification.
+- `code/tests/test_core.py`: synthetic identity and non-identification checks.
+- `data/source_manifest.csv`: pinned sources for the eight benchmark datasets.
 
-PFA uses one skill-specific intercept and separate skill-specific coefficients for prior
-successes and failures on the active skill. Outcome-dependent features are strictly causal.
+## Reproducibility boundary
 
-## Full reproducibility package
+The public release is intentionally scoped to the paper's central metric and
+identification contribution plus the reported table exports. Raw third-party
+benchmarks and large cached prediction arrays are not redistributed.
 
-The repository contains `reproducibility_package.zip`, which includes the synchronized source
-code, tests, data-source manifest, data-retrieval/build scripts, and machine-readable manuscript tables.
-Large cached prediction arrays are regenerated locally and are not committed.
+## Citation
+
+Please cite the associated manuscript. Machine-readable citation metadata are in
+`CITATION.cff`.
 
 ## License
 
-Analysis code: MIT License. Benchmark licenses and original provider terms remain unchanged.
+Repository analysis code is released under the MIT License. Dataset licenses and
+original provider terms are unchanged.
