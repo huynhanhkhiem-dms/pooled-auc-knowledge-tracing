@@ -1,12 +1,12 @@
 # Derived manuscript results
 
-`manuscript_tables/` contains machine-readable CSV exports of the seven tables in
-the submission manuscript.
+This directory contains the machine-readable outputs used to audit the final manuscript.
 
-`derived_nonidentification_all8.csv` contains the complete eight-benchmark
-non-identification construction outputs referenced in the Results section.
+- `metrics_14_rules.csv` contains the 14 scoring rules used for the model-ranking analyses.
+- `table_*.csv` files contain derived analyses from the same artifact lineage.
+- `manuscript_tables/` contains compact CSV exports of the seven tables printed in the submission manuscript.
+- `derived_nonidentification_all8.csv` contains the eight-benchmark non-identification construction outputs.
 
-These files expose reported/derived values for inspection; they are not a substitute
-for the manuscript's definitions, estimands, uncertainty analysis, or limitations.
-Raw third-party benchmark files and large cached model-prediction arrays are not
-committed to this repository.
+The released rule set uses the label `PFA-shared` for the constrained PFA-style baseline with a skill-specific intercept and shared prior-success/prior-failure slopes. This distinguishes the implemented baseline from canonical PFA with skill-specific success/failure slopes.
+
+Raw third-party benchmark files and large cached prediction arrays are not committed. Use the repository data-retrieval script and analysis pipeline to regenerate them.
