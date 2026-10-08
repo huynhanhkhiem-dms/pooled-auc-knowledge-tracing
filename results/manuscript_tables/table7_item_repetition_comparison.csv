@@ -1,5 +1,5 @@
-Dataset,pooled Δ,same-item Δ,same-item before,same-item after,pooled before→after
-assistments17,,,0.4685,0.8434,
-spanish,,,0.7655,0.7668,
-assistments15,,,0.3929,0.3929,
-assistments12,,,0.4667,0.2948,
+Dataset,pooled Δ,within-learner Δ,same-item before,same-item after,same-item Δ
+assistments17,+0.0055,+0.0118,0.4685,0.8434,+0.3749
+spanish,+0.0003,+0.0004,0.7655,0.7668,+0.0012
+assistments15,+0.0000,+0.0000,0.3929,0.3929,+0.0001
+assistments12,+0.0006,+0.0000,0.4667,0.2948,-0.1719
